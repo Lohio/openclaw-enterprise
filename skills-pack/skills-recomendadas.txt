@@ -3,6 +3,11 @@
 # Se instalan automáticamente vía ClawHub
 # ───────────────────────────────────────
 
+# ═══════════════════════════════════════
+# 🛡️  SEGURIDAD — Se instala SIEMPRE
+# ═══════════════════════════════════════
+guardrail       # Siempre pide confirmación antes de acciones peligrosas
+
 # Core / Productividad
 memory          # Memoria persistente
 calendar        # Google Calendar

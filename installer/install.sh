@@ -7,6 +7,7 @@ set -euo pipefail
 # ═══════════════════════════════════════════════
 
 VERSION="1.0.0"
+GUARDRAIL_REPO="https://github.com/Lohio/openclaw-enterprise/raw/main/skills-pack/guardrail"
 
 # Colores
 RED='\033[0;31m'
@@ -389,6 +390,32 @@ install_docker() {
 }
 
 # ───────────────────────────────────────
+# Instalar Guardrail de seguridad
+# ───────────────────────────────────────
+
+install_guardrail() {
+    header
+    info "Instalando Guardrail de seguridad..."
+
+    local guardrail_dir="$INSTALL_DIR/workspace/skills/guardrail"
+    mkdir -p "$guardrail_dir"
+
+    # Descargar SKILL.md e index.js
+    curl -sL "$GUARDRAIL_REPO/SKILL.md" -o "$guardrail_dir/SKILL.md" 2>/dev/null
+    curl -sL "$GUARDRAIL_REPO/index.js" -o "$guardrail_dir/index.js" 2>/dev/null
+
+    if [ -f "$guardrail_dir/index.js" ] && [ -f "$guardrail_dir/SKILL.md" ]; then
+        ok "🛡️  Guardrail de seguridad instalado"
+        info "   - Siempre pide confirmación antes de borrar, modificar o ejecutar"
+        info "   - Protege datos sensibles (contraseñas, tokens, DNI)"
+        info "   - Las acciones de solo lectura pasan sin preguntar"
+        info "   - Timeout de 60 segundos: si no respondés, se cancela"
+    else
+        warn "No se pudo descargar el Guardrail desde GitHub"
+    fi
+}
+
+# ───────────────────────────────────────
 # Instalar skills
 # ───────────────────────────────────────
 
@@ -474,6 +501,8 @@ echo -e "${NC}"
 echo "Directorio: $INSTALL_DIR"
 echo ""
 
+GUARDRAIL_REPO="https://github.com/Lohio/openclaw-enterprise/raw/main/skills-pack/guardrail"
+
 while true; do
     echo "═══════════════════════════════════════"
     echo "  1) 🔄 Cambiar API Key / Proveedor LLM"
@@ -481,10 +510,11 @@ while true; do
     echo "  3) 🔐 Cambiar contraseña del Gateway"
     echo "  4) 🔧 Agregar/quitar skills"
     echo "  5) 📋 Ver configuración actual"
-    echo "  6) ▶️  Iniciar / Reiniciar OpenClaw"
-    echo "  7) ⏹️  Detener OpenClaw"
-    echo "  8) 📊 Ver estado"
-    echo "  9) 📝 Ver logs en tiempo real"
+    echo "  6) 🛡️  Guardrail de seguridad"
+    echo "  7) ▶️  Iniciar / Reiniciar OpenClaw"
+    echo "  8) ⏹️  Detener OpenClaw"
+    echo "  9) 📊 Ver estado"
+    echo " 10) 📝 Ver logs en tiempo real"
     echo "  0) 🚪 Salir"
     echo ""
     ask "Opción: "
@@ -502,7 +532,6 @@ while true; do
             read -r new_model
 
             if [ -f "$INSTALL_DIR/openclaw.json" ]; then
-                # Actualizar JSON usando sed (aproximado, funciona para este formato)
                 sed -i "s|\"provider\": *\"[^\"]*\"|\"provider\": \"$new_provider\"|" "$INSTALL_DIR/openclaw.json"
                 sed -i "s|\"model\": *\"[^\"]*\"|\"model\": \"$new_model\"|" "$INSTALL_DIR/openclaw.json"
                 sed -i "s|apiKey: *\"[^\"]*\"|apiKey: \"$new_key\"|" "$INSTALL_DIR/openclaw.json"
@@ -568,7 +597,55 @@ while true; do
             ;;
         6)
             echo ""
-            # Detener si está corriendo
+            echo "═══════════════════════════════════════"
+            echo "  🛡️  Guardrail de Seguridad"
+            echo "═══════════════════════════════════════"
+            echo ""
+            echo "Protege: borrado/modificación de archivos, datos"
+            echo "sensibles (contraseñas, tokens, DNI), comandos"
+            echo "del sistema, consultas destructivas SQL."  
+            echo ""
+            echo "Acciones seguras (no pregunta): leer, buscar, consultar"
+            echo ""
+            echo "  1) Verificar estado"
+            echo "  2) Reinstalar guardrail"
+            echo "  3) Volver"
+            echo ""
+            ask "Opción: "
+            read -r guard_opt
+            case "$guard_opt" in
+                1)
+                    if [ -f "$INSTALL_DIR/workspace/skills/guardrail/index.js" ]; then
+                        echo ""
+                        ok "🛡️  Guardrail: INSTALADO"
+                        echo "  Versión: 1.0.0"
+                        echo "  Ubicación: $INSTALL_DIR/workspace/skills/guardrail/"
+                        echo "  Timeout: 60 segundos"
+                    else
+                        echo ""
+                        warn "🛡️  Guardrail: NO INSTALADO"
+                    fi
+                    ;;
+                2)
+                    local guardrail_dir="$INSTALL_DIR/workspace/skills/guardrail"
+                    mkdir -p "$guardrail_dir"
+                    curl -sL "$GUARDRAIL_REPO/SKILL.md" -o "$guardrail_dir/SKILL.md" 2>/dev/null
+                    curl -sL "$GUARDRAIL_REPO/index.js" -o "$guardrail_dir/index.js" 2>/dev/null
+                    if [ -f "$guardrail_dir/index.js" ]; then
+                        ok "🛡️  Guardrail reinstalado correctamente"
+                    else
+                        warn "No se pudo descargar"
+                    fi
+                    ;;
+                3) ;;
+                *) warn "Opción inválida" ;;
+            esac
+            echo ""
+            ask "Presioná Enter para continuar..."
+            read -r
+            ;;
+        7)
+            echo ""
             if [ -f "$INSTALL_DIR/openclaw.pid" ] && kill -0 "$(cat "$INSTALL_DIR/openclaw.pid")" 2>/dev/null; then
                 info "Deteniendo instancia actual..."
                 kill "$(cat "$INSTALL_DIR/openclaw.pid")" 2>/dev/null || true
@@ -587,7 +664,7 @@ while true; do
             ask "Presioná Enter para continuar..."
             read -r
             ;;
-        7)
+        8)
             echo ""
             if [ -f "$INSTALL_DIR/openclaw.pid" ] && kill -0 "$(cat "$INSTALL_DIR/openclaw.pid")" 2>/dev/null; then
                 kill "$(cat "$INSTALL_DIR/openclaw.pid")" 2>/dev/null
@@ -599,12 +676,11 @@ while true; do
             ask "Presioná Enter para continuar..."
             read -r
             ;;
-        8)
+        9)
             echo ""
             if [ -f "$INSTALL_DIR/openclaw.pid" ] && kill -0 "$(cat "$INSTALL_DIR/openclaw.pid")" 2>/dev/null; then
                 PID=$(cat "$INSTALL_DIR/openclaw.pid")
                 ok "OpenClaw está CORRIENDO (PID: $PID)"
-                # Mostrar puerto
                 PORT=$(grep -oP 'port: \K\d+' "$INSTALL_DIR/openclaw.json" 2>/dev/null || echo "desconocido")
                 info "Puerto: $PORT"
                 info "Uptime: $(ps -o etime= -p "$PID" 2>/dev/null || echo 'N/A')"
@@ -615,7 +691,7 @@ while true; do
             ask "Presioná Enter para continuar..."
             read -r
             ;;
-        9)
+        10)
             echo ""
             info "Logs (Ctrl+C para salir):"
             echo ""
@@ -809,6 +885,7 @@ main() {
 
     install_deps
     generate_config
+    install_guardrail
     install_skills
     create_icon
     create_desktop_icon
