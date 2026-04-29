@@ -1,0 +1,56 @@
+# ───────────────────────────────────────
+# OpenClaw Enterprise - Skills Recomendados
+# Se instalan automáticamente vía ClawHub
+# ───────────────────────────────────────
+
+# Core / Productividad
+memory          # Memoria persistente
+calendar        # Google Calendar
+translate       # Traducción multilingüe
+weather         # Pronóstico del tiempo
+
+# Búsqueda
+search          # Búsqueda web multi-motor
+news            # Resumen de noticias
+
+# Comunicación
+gmail           # Correo Gmail
+slack           # Mensajes Slack
+telegram        # Bot de Telegram
+
+# Desarrollo y DevOps
+git             # Control de versiones
+github          # Issues, PRs, repos
+docker          # Contenedores Docker
+
+# Oficina
+nano-pdf        # Lectura/creación de PDFs
+diagram         # Generación de diagramas
+meeting         # Notas de reuniones
+
+# Monitoreo y SysAdmin
+server-health   # Salud del servidor
+nginx-config    # Configuración de Nginx
+ssl-certificate # Verificación de SSL
+firewall        # Gestión de firewall
+backup          # Automatización de backups
+
+# Seguridad
+alert-manager   # Gestión de alertas
+webhook-notify  # Notificaciones webhook
+
+# Finanzas
+stock           # Cotizaciones de acciones
+crypto          # Mercado crypto
+
+# Multimedia
+screenshot      # Captura de pantalla
+voice           # Texto a voz y comandos de voz
+
+# Gestión de proyectos
+trello          # Kanban y tableros
+jira            # Tickets y sprints
+notion          # Docs y bases de datos
+
+# Streaming
+spotify         # Control de música
