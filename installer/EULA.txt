@@ -1,0 +1,144 @@
+═══════════════════════════════════════════════════════════
+OPENCLAW ENTERPRISE v1.0.0
+CONTRATO DE LICENCIA DE USUARIO FINAL (EULA)
+DISTRIBUIDO POR DBYTE
+═══════════════════════════════════════════════════════════
+
+AL HACER CLIC EN "ACEPTO" O INSTALAR O UTILIZAR EL SOFTWARE,
+USTED ACEPTA LOS TÉRMINOS DE ESTE ACUERDO. SI NO ACEPTA ESTOS
+TÉRMINOS, NO INSTALE NI UTILICE EL SOFTWARE.
+
+──────────────────────────────────────────────────────────
+1. LICENCIA
+──────────────────────────────────────────────────────────
+
+El Software (OpenClaw Enterprise) se distribuye bajo licencia MIT,
+con las protecciones y limitaciones adicionales establecidas en
+este documento. El Software incluye componentes de código abierto
+sujetos a sus propias licencias (MIT, Apache 2.0, etc.).
+
+Se otorga permiso, de forma gratuita, a cualquier persona que
+obtenga una copia del Software, para usar, copiar, modificar,
+fusionar, publicar, distribuir, sublicenciar y/o vender copias
+del Software, siempre que se mantenga el aviso de copyright
+original.
+
+──────────────────────────────────────────────────────────
+2. DESCARGO DE RESPONSABILIDAD POR DATOS SENSIBLES
+──────────────────────────────────────────────────────────
+
+DBYTE NO SE RESPONSABILIZA BAJO NINGUNA CIRCUNSTANCIA POR:
+
+  a) Datos sensibles, personales, financieros, médicos o de
+     cualquier otra naturaleza que el Usuario envíe, procese o
+     almacene a través del Software.
+
+  b) El uso que los proveedores de inteligencia artificial
+     externos (OpenAI, Anthropic, Google, DeepSeek o cualquier
+     otro) den a los datos, prompts o información transmitida
+     a través de sus APIs.
+
+  c) Pérdida, filtración, corrupción, acceso no autorizado o
+     mal uso de la información procesada por el Software.
+
+  d) Daños directos, indirectos, incidentales, especiales o
+     consecuentes derivados del uso o imposibilidad de uso del
+     Software.
+
+EL USUARIO ES EL ÚNICO RESPONSABLE DE:
+
+  a) No compartir información confidencial, protegida o
+     regulada a través del Software sin las debidas garantías.
+
+  b) Cumplir con todas las leyes y regulaciones aplicables en
+     materia de protección de datos personales (GDPR, LGPD,
+     Ley de Protección de Datos argentina 25.326, etc.).
+
+  c) Obtener los consentimientos necesarios de los usuarios
+     finales antes de procesar sus datos.
+
+  d) Implementar medidas de seguridad adicionales según el
+     nivel de riesgo de los datos manejados.
+
+──────────────────────────────────────────────────────────
+3. FUNCIONAMIENTO DEL GUARDRAIL DE SEGURIDAD
+──────────────────────────────────────────────────────────
+
+El Software incluye un sistema de Guardrail que solicita
+confirmación al usuario antes de ejecutar acciones potencialmente
+peligrosas (borrado de archivos, ejecución de comandos, etc.).
+
+EL USUARIO RECONOCE QUE:
+
+  a) El Guardrail es una capa de seguridad adicional, no una
+     garantía absoluta contra errores o mal uso.
+
+  b) Es responsabilidad del Usuario configurar y mantener
+     actualizado el Guardrail.
+
+  c) Acciones de solo lectura (leer, buscar, consultar) NO
+     son interceptadas por el Guardrail.
+
+  d) El Guardrail tiene un timeout de 60 segundos; si el
+     usuario no responde, la acción se cancela automáticamente.
+
+──────────────────────────────────────────────────────────
+4. RECOLECCIÓN DE DATOS POR DBYTE
+──────────────────────────────────────────────────────────
+
+DByte NO recolecta, almacena, procesa ni transmite:
+  - Datos de los usuarios finales
+  - API Keys o credenciales configuradas
+  - Mensajes, prompts o respuestas del asistente
+  - Métricas de uso o telemetría
+
+Todo el procesamiento ocurre localmente en la infraestructura
+del Usuario. Las únicas comunicaciones externas son hacia la
+API del proveedor de IA seleccionado por el Usuario.
+
+──────────────────────────────────────────────────────────
+5. LIMITACIÓN DE RESPONSABILIDAD
+──────────────────────────────────────────────────────────
+
+EN LA MÁXIMA MEDIDA PERMITIDA POR LA LEY APLICABLE, DBYTE NO
+SERÁ RESPONSABLE POR NINGÚN DAÑO INDIRECTO, INCIDENTAL,
+ESPECIAL, CONSECUENTE O EJEMPLAR, INCLUYENDO ENTRE OTROS,
+DAÑOS POR PÉRDIDA DE BENEFICIOS, FONDO DE COMERCIO, USO,
+DATOS U OTRAS PÉRDIDAS INTANGIBLES, DERIVADAS DEL USO DEL
+SOFTWARE.
+
+LA RESPONSABILIDAD TOTAL DE DBYTE NO EXCEDERÁ EL MONTO
+PAGADO POR EL USUARIO POR EL SOFTWARE, SI LO HUBIERE.
+
+──────────────────────────────────────────────────────────
+6. ACEPTACIÓN DE RIESGOS
+──────────────────────────────────────────────────────────
+
+EL USUARIO RECONOCE QUE EL USO DE INTELIGENCIA ARTIFICIAL
+IMPLICA RIESGOS INHERENTES, INCLUYENDO:
+
+  - Alucinaciones o información incorrecta generada por el LLM
+  - Exposición involuntaria de datos a terceros proveedores
+  - Dependencia de la disponibilidad de servicios externos API
+  - Costos asociados al consumo de APIs de IA
+
+EL USUARIO ACEPTA ESTOS RIESGOS Y EXIME A DBYTE DE TODA
+RESPONSABILIDAD ASOCIADA.
+
+──────────────────────────────────────────────────────────
+7. LEY APLICABLE Y JURISDICCIÓN
+──────────────────────────────────────────────────────────
+
+Este acuerdo se rige por las leyes de la República Argentina.
+Cualquier disputa se resolverá ante los tribunales de la
+Ciudad Autónoma de Buenos Aires.
+
+──────────────────────────────────────────────────────────
+8. CONTACTO
+──────────────────────────────────────────────────────────
+
+Para consultas sobre este EULA:
+  https://github.com/Lohio/openclaw-enterprise
+
+AL HACER CLIC EN "ACEPTO" USTED DECLARA HABER LEÍDO,
+ENTENDIDO Y ACEPTADO ESTOS TÉRMINOS.
